@@ -1,0 +1,66 @@
+#map {
+    height: 500px;
+    width: 100%;
+}
+
+.mapcontainer {
+    position: relative;
+    text-align: center;
+    color: white;
+}
+
+/* For TL 01 */
+.left-light-bottom {
+    position: absolute;
+    bottom: 8px;
+    left: 160px;
+}
+
+/* For TL 02 */
+.right-light-bottom {
+    position: absolute;
+    bottom: 8px;
+    left: 390px;
+}
+
+/* For TL 05 */
+.left-light-top {
+    position: absolute;
+    top: 8px;
+    left: 160px;
+}
+
+/* For TL 06 */
+.right-light-top {
+    position: absolute;
+    top: 8px;
+    left: 390px;
+}
+
+/* For TL 03 */
+.left-light-mid1{
+    position: absolute;
+    top: 280px;
+    left: 20px;
+}
+
+/* For TL 04 */
+.left-light-mid2 {
+    position: absolute;
+    top: 160px;
+    left: 20px;
+}
+
+/* For TL 05 */
+.right-light-mid1{
+    position: absolute;
+    top: 280px;
+    right: 20px;
+}
+
+/* For TL 06 */
+.right-light-mid2 {
+    position: absolute;
+    top: 160px;
+    right: 20px;
+}
