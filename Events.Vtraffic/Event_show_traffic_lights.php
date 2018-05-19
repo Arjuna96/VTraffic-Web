@@ -1,140 +1,42 @@
- <div class="row">            
-            <div class="col-md-1">
-                <center>
-                <div style="padding-top: 20px"></div>
-                <h4>TL 03</h4>
-               <?php
-                if ($TL3 == 0){
-                  echo '<img src="images/red_light.png" width="60px" align="middle">';
-                }else{
-                  echo '<img src="images/red_light.png" width="60px" align="middle">';
-                }
-                ?>                </center>
-                <p>Set time : </p>
-                
-                <center>
-                <div style="padding-top: 40px"></div>
-                <h4>TL 01</h4>
-               <?php
-                if ($TL1 == 0){
-                  echo '<img src="images/red_light.png" width="60px" align="middle">';
-                }else{
-                  echo '<img src="images/green_light.png" width="60px" align="middle">';
-                }
-                ?>                </center>
-                <p>Set time :</p>
-                
+<div class="col-md-6">
+    <!-- Horizontal Form -->
+    <div class="box box-info">
+        <div class="box-header with-border">
+            <h3 class="box-title">Location : Wellawatte</h3>
+        </div>
+        <!-- /.box-header -->
+        <!-- form start -->
+        <form class="form-horizontal">
+            <div class="box-body">
+                <div class="form-group">
+                    <label for="input1" class="col-sm-2 control-label">Current_Status</label>
+
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control" id="input1" value="<?php echo $status ?>" disabled>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="input2" class="col-sm-2 control-label">Green_Time</label>
+
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control" id="input2" value="<?php echo $time. " seconds" ?>" disabled>
+                    </div>
+                </div>                     
             </div>
-            
-            <div class="col-md-1">
-                <center>
-                <div style="padding-top: 20px"></div>
-                <h4>TL 04 </h4>
-               <?php
-                if ($TL4 == 0){
-                  echo '<img src="images/red_light.png" width="60px" align="middle">';
-                }else{
-                  echo '<img src="images/green_light.png" width="60px" align="middle">';
-                }
-                ?>                </center>
-                <p>Set time :</p>
-                
-                <center>
-                <div style="padding-top: 40px"></div>
-                <h4>TL 02 </h4>
-               <?php
-                if ($TL2 == 0){
-                  echo '<img src="images/red_light.png" width="60px" align="middle">';
-                }else{
-                  echo '<img src="images/green_light.png" width="60px" align="middle">';
-                }
-                ?>                </center>
-                <p>Set time :</p>
-                
-            </div>
-            
-            <div class="mapcontainer col-md-8">
-                <img src="images/Project_map.png" class="img-responsive" style=" border-style: solid;border-width: 2px;">
-                <div class="left-light-bottom">
-                    <input type="text" name="$TL01" class="form-control">
-                </div>
-                <div class="right-light-bottom">
-                    <input type="text" name="$TL02" class="form-control">
-                </div>
-                
-                <div class="left-light-top">
-                    <input type="text" name="$TL03" class="form-control">
-                </div>
-                <div class="right-light-top">
-                    <input type="text" name="$TL04" class="form-control">
-                </div>
-                
-                <div class="left-light-mid1">
-                    <input type="text" name="$TL03" class="form-control">
-                </div>
-                <div class="left-light-mid2">
-                    <input type="text" name="$TL04" class="form-control">
-                </div>
-                
-                <div class="right-light-mid1">
-                    <input type="text" name="$TL03" class="form-control">
-                </div>
-                <div class="right-light-mid2">
-                    <input type="text" name="$TL04" class="form-control">
-                </div>
-                
-            </div>
-            
-            <div class="col-md-1">
-                <center>
-                <div style="padding-top: 20px"></div>
-                <h4>TL 05 </h4>
-               <?php
-                if ($TL5 == 0){
-                 echo '<img src="images/red_light.png" width="60px" align="middle">';
-                }else{
-                 echo '<img src="images/green_light.png" width="60px" align="middle">';
-                }
-                ?>                </center>
-                <p>Set time :</p>
-                
-                <center>
-                <div style="padding-top: 40px"></div>
-                <h4>TL 07</h4>
-               <?php
-                if ($TL7 == 0){
-                  echo '<img src="images/red_light.png" width="60px" align="middle">';
-                }else{
-                  echo '<img src="images/green_light.png" width="60px" align="middle">';
-                }
-                ?>                </center>
-                <p>Set time :</p>
-            </div>
-            
-            <div class="col-md-1">
-                <center>
-                <div style="padding-top: 20px"></div>
-                <h4>TL 06</h4>
-               <?php
-                if ($TL6 == 0){
-                  echo '<img src="images/red_light.png" width="60px" align="middle">';
-                }else{
-                  echo '<img src="images/green_light.png" width="60px" align="middle">';
-                }
-                ?>                </center>
-                <p>Set time :</p>
-                
-                <center>
-                <div style="padding-top: 40px"></div>
-                <h4>TL 08</h4>
-               <?php
-                if ($TL8 == 0){
-                  echo '<img src="images/red_light.png" width="60px" align="middle">';
-                }else{
-                  echo '<img src="images/green_light.png" width="60px" align="middle">';
-                }
-               ?>
-                </center>
-                <p>Set time :</p>
-            </div>
+        </form>
+    </div>
 </div>
+<div class="col-md-6">
+    <?php
+    if ($status == 0) {
+        echo '<img src="images/Traffic/0.jpg" alt=""/>';
+    } elseif ($status == 1) {
+        echo '<img src="images/Traffic/1.jpg" alt=""/>';
+    } elseif ($status == 2) {
+        echo '<img src="images/Traffic/2.jpg" alt=""/>';
+    } elseif ($status == 3) {
+        echo '<img src="images/Traffic/3.jpg" alt=""/>';
+    }
+    ?>
+
+</div> 

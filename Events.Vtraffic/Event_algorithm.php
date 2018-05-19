@@ -1,77 +1,31 @@
 <?php
 
-        if ($state === 1) {
-            $TL1 = 1; // Traffic Light bottom to top | left lane
-            $TL2 = 0; // Traffic Light bottom to top | right lane
+$url = 'http://18.191.39.15:2000/api/getCurrentState';
+$params = "trafficLightId=1";
 
-            $TL5 = 0; // Traffic Light top to bottom | left lane
-            $TL6 = 1; // Traffic Light top to bottom | right lane
+$ch = curl_init($url);
 
-            $TL4 = 0; // Traffic Light left to right | left lane
-            $TL3 = 0; // Traffic Light left to right | right lane
+curl_setopt($ch, CURLOPT_POST, 1);
+curl_setopt($ch, CURLOPT_POSTFIELDS, $params);
+curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+$result = curl_exec($ch);
 
-            $TL8 = 0; // Traffic Light right to left | left lane
-            $TL7 = 0; // Traffic Light right to left | right lane
-        } else if ($state === 2) {
-            $TL1 = 1; // Traffic Light bottom to top | left lane
-            $TL2 = 1; // Traffic Light bottom to top | right lane
+curl_close($ch);
 
-            $TL5 = 0; // Traffic Light top to bottom | left lane
-            $TL6 = 0; // Traffic Light top to bottom | right lane
+$response = json_decode($result);
 
-            $TL4 = 0; // Traffic Light left to right | left lane
-            $TL3 = 0; // Traffic Light left to right | right lane
+$status = $response->Current_state;
 
-            $TL8 = 0; // Traffic Light right to left | left lane
-            $TL7 = 0; // Traffic Light right to left | right lane   
-        } else if ($state === 3) {
-            $TL1 = 0; // Traffic Light bottom to top | left lane
-            $TL2 = 0; // Traffic Light bottom to top | right lane
+$url2 = 'http://18.191.39.15:2000/api/requestTime';
+$params2 = "trafficLightId=1&stateId=$status";
+$ch2 = curl_init($url2);
+curl_setopt($ch2, CURLOPT_POST, 1);
+curl_setopt($ch2, CURLOPT_POSTFIELDS, $params2);
+curl_setopt($ch2, CURLOPT_RETURNTRANSFER, true);
+$result2 = curl_exec($ch2);
+curl_close($ch2);
 
-            $TL5 = 1; // Traffic Light top to bottom | left lane
-            $TL6 = 1; // Traffic Light top to bottom | right lane
+$time = $result2;
 
-            $TL4 = 0; // Traffic Light left to right | left lane
-            $TL3 = 0; // Traffic Light left to right | right lane
-
-            $TL8 = 0; // Traffic Light right to left | left lane
-            $TL7 = 0; // Traffic Light right to left | right lane   
-        } else if ($state === 4) {
-            $TL1 = 0; // Traffic Light bottom to top | left lane
-            $TL2 = 0; // Traffic Light bottom to top | right lane
-
-            $TL5 = 0; // Traffic Light top to bottom | left lane
-            $TL6 = 0; // Traffic Light top to bottom | right lane
-
-            $TL4 = 1; // Traffic Light left to right | left lane
-            $TL3 = 0; // Traffic Light left to right | right lane
-
-            $TL8 = 1; // Traffic Light right to left | left lane
-            $TL7 = 0; // Traffic Light right to left | right lane   
-        } else if ($state === 5) {
-            $TL1 = 0; // Traffic Light bottom to top | left lane
-            $TL2 = 0; // Traffic Light bottom to top | right lane
-
-            $TL5 = 0; // Traffic Light top to bottom | left lane
-            $TL6 = 0; // Traffic Light top to bottom | right lane
-
-            $TL4 = 1; // Traffic Light left to right | left lane
-            $TL3 = 1; // Traffic Light left to right | right lane
-
-            $TL8 = 0; // Traffic Light right to left | left lane
-            $TL7 = 0; // Traffic Light right to left | right lane   
-        } else if ($state === 6) {
-            $TL1 = 0; // Traffic Light bottom to top | left lane
-            $TL2 = 0; // Traffic Light bottom to top | right lane
-
-            $TL5 = 0; // Traffic Light top to bottom | left lane
-            $TL6 = 0; // Traffic Light top to bottom | right lane
-
-            $TL4 = 0; // Traffic Light left to right | left lane
-            $TL3 = 0; // Traffic Light left to right | right lane
-
-            $TL8 = 1; // Traffic Light right to left | left lane
-            $TL7 = 1; // Traffic Light right to left | right lane   
-        }
 ?>
 
