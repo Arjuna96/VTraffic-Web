@@ -33,13 +33,14 @@
         <!-- JQuery Datatables -->
         <link href="dist/css/datatables.css" rel="stylesheet" type="text/css"/>
         <link href="plugins/jquery-datatable/skin/bootstrap/css/dataTables.bootstrap.css" rel="stylesheet" type="text/css"/>
-
+        <!-- Materialize -->
+        <link href="dist/css/materialize.css" rel="stylesheet" type="text/css"/>
         <!-- Preloader -->
         <link href="dist/css/preloader.css" rel="stylesheet" type="text/css"/>
-        
+
         <!-- Map Styles -->
         <link href="dist/css/map.css" rel="stylesheet" type="text/css"/>
-        
+
         <!--File Upload-->
         <link href="dist/css/fileinput.css" rel="stylesheet" type="text/css"/>
         <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
@@ -51,7 +52,7 @@
         <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
         <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
         <![endif]-->
-        
+
         <script>
             //paste this code under head tag or in a seperate js file.
             // Wait for window load
@@ -61,41 +62,23 @@
                 ;
             });
         </script>
+        <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCSCZ5toxrlJK9GKy-VvizjKNIvnxXE2d8&callback=initMap" sync defer></script>
         
-        <!-- Custom Scripts for Vehicle is Exsist || Initial Upload page  -->
-    <script type="text/javascript">
-        function checkname()
-            {
-             var name=document.getElementById( "input1" ).value;
+            <style>
+          #map {
+            width: 100%;
+            height: 200px;
+          }
+          
+          #map2 {
+            width: 100%;
+            height: 400px;
+          }
+          
+          #mapdraw {
+            width: 100%;
+            height: 400px;
+          }
+        </style>
 
-             if(name)
-             {
-              $.ajax({
-              type: 'post',
-              url: 'ajaxchecks/checkdata.php',
-              data: {
-               page_name:name,
-              },
-              success: function (response) {
-               $( '#name_status' ).html(response);
-               if(response=="OK")	
-               {
-                return true;	
-               }
-               else
-               {
-                return false;	
-               }
-              }
-              });
-             }
-             else
-             {
-              $( '#name_status' ).html("");
-              return false;
-             }
-            }
-
-    </script>
-    
     </head>

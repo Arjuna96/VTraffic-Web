@@ -1,4 +1,4 @@
-<body class="hold-transition skin-blue sidebar-mini" onload="timer()>
+<body class="hold-transition skin-blue sidebar-mini" onload="timer()">
     
 <!-- Pre loding animation -->
 <div class="se-pre-con"></div>
@@ -34,42 +34,12 @@
                                 <li>
                                     <!-- inner menu: contains the actual data -->
                                     <ul class="menu">
-<!--                                        <li> start message 
-                                            <a href="#">
-                                                <div class="pull-left">
-                                                    <img src="dist/img/user1.jpg" class="img-circle" alt="User Image">
-                                                </div>
-                                                <h4>
-                                                    Support Team
-                                                    <small><i class="fa fa-clock-o"></i> 5 mins</small>
-                                                </h4>
-                                                <p>Why not buy a new awesome theme?</p>
-                                            </a>
-                                        </li>-->
-                                        <!-- end message -->
                                     </ul>
                                 </li>
                                 <li class="footer"><a href="#">See All Notifications</a></li>
                             </ul>
                         </li>
 
-                        <!-- User Account: style can be found in dropdown.less -->
-                        <li class="dropdown user user-menu">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                                <img src="dist/img/org.jpg" class="user-image" alt="User Image">
-                                <span class="hidden-xs"></span>
-                            </a>
-                            <ul class="dropdown-menu">
-                                <!-- User image -->
-                                <li class="user-header">
-                                    <p>
-                                        System User
-                                        <small>Member since 2018</small>
-                                    </p>
-                                </li>
-                            </ul>
-                        </li>
-                        <!-- Control Sidebar Toggle Button -->
                         <li>
                             <a href="logout.php"><i class="fa fa-sign-out"></i></a>
                         </li>
@@ -96,17 +66,24 @@
                 <ul class="sidebar-menu" style="<?php echo $usermenu ?>">
                     <li class="header">MAIN NAVIGATION</li>
                     <li class="<?php echo $activeuser1 ?>">
-                        <a href="A"><i class="fa fa-dashboard"></i> <span>Map Overview</span></a>
+                        <a href="Admin_Dashboard.php"><i class="fa fa-dashboard"></i> <span>Map Overview</span></a>
                     </li>
                     <li class="<?php echo $activeuser2 ?>">
-                        <a href=""><i class="fa fa-paper-plane-o"></i> <span>Locations</span></a>
-                    </li>   
-                    <li class="<?php echo $activeuser2 ?>">
-                        <a href=""><i class="fa fa-cogs"></i> <span>Controlling</span></a>
+                        <a href="Admin_Location_Create.php"><i class="fa fa-paper-plane-o"></i> <span>Add New Locations</span></a>
                     </li>
-                </ul>
-                
-               
+                    <li class="<?php echo $activeuser3 ?>">
+                        <a href="Admin_User_Create.php"><i class="fa fa-user-plus"></i> <span>Create New User</span></a>
+                    </li>  
+                    <li class="<?php echo $activeuser4 ?>">
+                        <a href="Admin_User_Maintain.php"><i class="fa fa-users"></i> <span>Maintain Users</span></a>
+                    </li>  
+                    <li class="<?php echo $activeuser5 ?>">
+                        <a href="Admin_Traffic_Control.php"><i class="fa fa-cogs"></i> <span>Controlling</span></a>
+                    </li>
+                    <li class="<?php echo $activeuser6 ?>">
+                        <a href="Admin_Dummy_request.php"><i class="fa fa-user-times"></i> <span>Dummy Values</span></a>
+                    </li>
+                </ul>          
             </section>
             <!-- /.sidebar -->
         </aside>

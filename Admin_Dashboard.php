@@ -2,126 +2,43 @@
 session_start();
 require 'headtag.php';
 $activeuser1 = "active";
-$activeuser5 = "active";
 require 'menu.php';
+
+//Default Values
+$num1 = 5000;
+$num2 = 10000;
+$num3 = 15000;
+$num4 = 20000;
+$num5 = 25000;
+$num6 = 30000;
 ?>
 
 <script type="text/javascript">
-    function Data1() {
+    function populateData() {
         try {
-            var locationID = 1;
+            var locationID = 1; // Traffic light location ID
 
             var xmlhttp = new XMLHttpRequest();
             xmlhttp.onreadystatechange = function () {
                 if (this.readyState == 4 && this.status == 200) {
-                    document.getElementById("traffic_data").innerHTML = this.responseText;
+                    document.getElementById("traffic_data").innerHTML = this.responseText; // Dispaly response in Traffic_data DIV
                 }
             };
-            xmlhttp.open("GET", "Events.Vtraffic/Event_check_traffic_data.php?locationId="+locationID+"&stateNo=1", true);
+            xmlhttp.open("GET", "Events.Vtraffic/Event_check_traffic_data.php?locationId=" + locationID + "&stateNo=1", true); // Traffic State No 1
             xmlhttp.send();
         } catch (err) {
             document.getElementById("traffic_data").innerHTML = "";
         }
     }
+
+    setInterval(function () {
+        populateData(); // this will run after every 5 seconds
+    }, 5000);
     
-    function Data2() {
-        try {
-            var locationID = 1;
+    setTimeout(function() {
+        document.getElementById("myDiv").style.display="none";
+    }, 6000);  // 5 seconds
 
-            var xmlhttp = new XMLHttpRequest();
-            xmlhttp.onreadystatechange = function () {
-                if (this.readyState == 4 && this.status == 200) {
-                    document.getElementById("traffic_data").innerHTML = this.responseText;
-                }
-            };
-            xmlhttp.open("GET", "Events.Vtraffic/Event_check_traffic_data.php?locationId=" + locationID + "&stateNo=2", true);
-            xmlhttp.send();
-        } catch (err) {
-            document.getElementById("traffic_data").innerHTML = "";
-        }
-    }
-    
-    function Data3() {
-        try {
-            var locationID = 1;
-
-            var xmlhttp = new XMLHttpRequest();
-            xmlhttp.onreadystatechange = function () {
-                if (this.readyState == 4 && this.status == 200) {
-                    document.getElementById("traffic_data").innerHTML = this.responseText;
-                }
-            };
-            xmlhttp.open("GET", "Events.Vtraffic/Event_check_traffic_data.php?locationId=" + locationID + "&stateNo=3", true);
-            xmlhttp.send();
-        } catch (err) {
-            document.getElementById("traffic_data").innerHTML = "";
-        }
-    }
-    
-    function Data4() {
-        try {
-            var locationID = 1;
-
-            var xmlhttp = new XMLHttpRequest();
-            xmlhttp.onreadystatechange = function () {
-                if (this.readyState == 4 && this.status == 200) {
-                    document.getElementById("traffic_data").innerHTML = this.responseText;
-                }
-            };
-            xmlhttp.open("GET", "Events.Vtraffic/Event_check_traffic_data.php?locationId=" + locationID + "&stateNo=4", true);
-            xmlhttp.send();
-        } catch (err) {
-            document.getElementById("traffic_data").innerHTML = "";
-        }
-    }
-    
-    function Data5() {
-        try {
-            var locationID = 1;
-
-            var xmlhttp = new XMLHttpRequest();
-            xmlhttp.onreadystatechange = function () {
-                if (this.readyState == 4 && this.status == 200) {
-                    document.getElementById("traffic_data").innerHTML = this.responseText;
-                }
-            };
-            xmlhttp.open("GET", "Events.Vtraffic/Event_check_traffic_data.php?locationId=" + locationID + "&stateNo=5", true);
-            xmlhttp.send();
-        } catch (err) {
-            document.getElementById("traffic_data").innerHTML = "";
-        }
-    }
-    
-    function Data6() {
-        try {
-            var locationID = 1;
-
-            var xmlhttp = new XMLHttpRequest();
-            xmlhttp.onreadystatechange = function () {
-                if (this.readyState == 4 && this.status == 200) {
-                    document.getElementById("traffic_data").innerHTML = this.responseText;
-                }
-            };
-            xmlhttp.open("GET", "Events.Vtraffic/Event_check_traffic_data.php?locationId=" + locationID + "&stateNo=6", true);
-            xmlhttp.send();
-        } catch (err) {
-            document.getElementById("traffic_data").innerHTML = "";
-        }
-    }
-
-function populateData() {
-    setTimeout(Data1, 2000);
-    setTimeout(Data2, 4000);
-    setTimeout(Data3, 6000);
-    setTimeout(Data4, 8000);
-    setTimeout(Data5, 10000);
-    setTimeout(Data6, 12000);
-}
-
-setInterval(function () {
-                populateData() // this will run after every 5 seconds
-            }, 12000);
-  
 </script>
 
 <div class="content-wrapper">
@@ -136,8 +53,46 @@ setInterval(function () {
         </ol>
     </section>
 
-    <!-- Main content -->
-    <section id="traffic_data" class="content">      
+    <section class="content">      
+        <div class="box-body">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="box box-info">
+                        <div class="box-header with-border">
+                            <h3 class="box-title">Select Traffic Area</h3>
+                        </div>
+                        <div class="box-body">
+                            <div class="form-group">
+                                <label></label>
+                                <select class="form-control" id="myDropDown" name="drpcamp" onchange="this.form.submit()">
+                                    <option>Select Location</option>
+                                    <?php
+                                    require 'dbconnect.php';
+                                    $sql = "SELECT * FROM tbl_vtlocations WHERE active='1' "; // Get all active locations
+                                    $result = mysqli_query($con, $sql) or die(mysqli_error());
+                                    while ($row = mysqli_fetch_array($result)) {
+                                        ?>
+                                        <option value="<?php echo $row ['locationID']; ?>"><?php echo $row ['locationName'] ?></option> 
+                                        <?php
+                                    }
+                                    ?>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            <div id="traffic_data" class="row">            
+                <div id = "myDiv">
+                    <center>
+                        <img id = "myImage" src = "images/cloudsync.gif" width="10%"><br>
+                    Please wait, Synchronizing Data...
+                    </center>
+                </div><br>
+            </div>
+        </div>
 
     </section>
 </div>

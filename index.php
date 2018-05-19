@@ -1,6 +1,42 @@
 <?php
-session_start();
+session_start(); 
+require './dbconnect.php'; // Database connection
 $output ="";
+
+if (isset($_POST['btn-login'])) {  
+    $userId = mysqli_real_escape_string($con,$_POST['form-username']); // filtter out SQL injections 
+    $uPass = mysqli_real_escape_string($con,$_POST['form-password']); // filtter out SQL injections 
+    $userid = trim($userId);
+    $upass = trim($uPass);
+    
+    $url = 'http://18.191.39.15:2000/api/login';
+
+$params = "username=$userid&password=$upass";
+
+$ch = curl_init($url);
+
+curl_setopt($ch, CURLOPT_POST, 1);
+curl_setopt($ch, CURLOPT_POSTFIELDS, $params);
+curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+$result = curl_exec($ch);
+
+curl_close($ch);
+
+echo $result."<br>";
+
+$response = json_decode($result);
+// access title of $book object
+echo $response->Status."<br>";
+$finalRes = $response->Status;
+    if ($finalRes == "success") {
+        $_SESSION['userid'] = $row['userId'];
+        $_SESSION['fname'] = $row['fname'];
+        header("Location: Admin_Dashboard.php");
+    }else {
+        $something = "<p style='color:red'><b>Login Failed !!!</b></p>";
+        $output = $something;
+    }
+}
 ?>
 
 <!DOCTYPE html>
@@ -40,11 +76,11 @@ $output ="";
 
                         <form action="index.php" method="post">
                             <div class="form-group has-feedback">
-                                <input type="text" class="form-control" name="form-username" placeholder="Username">
+                                <input type="text" class="form-control" name="form-username" placeholder="Username" required>
                                 <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
                             </div>
                             <div class="form-group has-feedback">
-                                <input type="password" class="form-control" name="form-password" placeholder="Password">
+                                <input type="password" class="form-control" name="form-password" placeholder="Password" required>
                                 <span class="glyphicon glyphicon-lock form-control-feedback"></span>
                             </div>
 
